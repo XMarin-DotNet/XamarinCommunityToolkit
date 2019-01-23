@@ -3,15 +3,17 @@ using Android.Views;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using PlatformEffects = Xamarin.Toolkit.Effects.Droid;
-using RoutingEffects = Xamarin.Toolkit.Effects;
+using PlatformEffects = Xamarin.Forms.Toolkit.Effects.Droid;
+using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
 
 [assembly: ExportEffect(typeof(PlatformEffects.EntryClear), nameof(RoutingEffects.EntryClear))]
-namespace Xamarin.Toolkit.Effects.Droid
+namespace Xamarin.Forms.Toolkit.Effects.Droid
 {
     [Preserve(AllMembers = true)]
     public class EntryClear : PlatformEffect
     {
+        public static int DrawableId { get; set; } = -1;
+
         protected override void OnAttached()
         {
             ConfigureControl();
@@ -22,16 +24,16 @@ namespace Xamarin.Toolkit.Effects.Droid
             var editText = Control as EditText;
 
             editText?.SetOnTouchListener(null);
-            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0);
+            editText?.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0);
         }
 
         void ConfigureControl()
         {
-            var editText = Control as EditText;
-            if (editText == null)
+            if (!(Control is EditText editText))
                 return;
 
-            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, Xamarin.Toolkit.Effects.Resource.Drawable.fct_ic_clear_icon, 0);
+            var id = DrawableId != -1 ? DrawableId : global::Android.Resource.Drawable.IcMenuCloseClearCancel;
+            editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, id, 0);
             editText.SetOnTouchListener(new OnDrawableTouchListener());
         }
     }

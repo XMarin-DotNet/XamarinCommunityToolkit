@@ -1,4 +1,4 @@
-If you think you've found a bug to report, before doing anything else you should check the [Issues](https://github.com/xamarin/XamarinCommunityToolkit/issues) page to see if an issue has already been filed! This can help reduce the number of duplicate reports.
+If you think you've found a bug to report, before doing anything else you should check the [Issues](https://github.com/Xamarin.Forms.Toolkit/issues) page to see if an issue has already been filed! This can help reduce the number of duplicate reports.
 
 If you're ready to submit a new issue, taking the following steps helps expedite the bug triage process:
 
@@ -41,4 +41,4 @@ Please make note if an issue appears hardware-specific (slower machines, multipl
 
 # Contributing #
 
-Think you may have a bug fix, or you'd like to work on fixing one yourself? We greatly welcome PRs with fixes from the community! Check out the [Contribute page](Contributing.md) for more info.
+Think you may have a bug fix, or you'd like to work on fixing one yourself? We greatly welcome PRs with fixes from the community! Check out the [Contribute page](CONTRIBUTING.md) for more info.

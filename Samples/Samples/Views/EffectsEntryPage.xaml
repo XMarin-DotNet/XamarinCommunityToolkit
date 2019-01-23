@@ -2,38 +2,53 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xamarin.Samples.Views.EffectsEntryPage"
+             xmlns:effects="clr-namespace:Xamarin.Forms.Toolkit.Effects;assembly=Xamarin.Forms.Toolkit"     
              Title="Entry effects">
-    <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <ScrollView Padding="10">
+        <StackLayout Spacing="10">
+            <Label Text="Adds a clear button to an Entry" />
+            <Entry Placeholder="start typing..." VerticalOptions="Start">
+                <Entry.Effects>
+                    <effects:EntryClear />
+                </Entry.Effects>
+            </Entry>
 
-        <Button Text="Capitalize keyboard effect"
-                Clicked="OnCapitalizeKeyboardButtonClicked"
-                Grid.Row="0" />
-        <Button Text="Clear effect"
-                Clicked="OnClearButtonClicked"
-                Grid.Row="1" />
-        <Button Text="Disable auto correct effect"
-                Clicked="OnDisableAutoCorrectButtonClicked"
-                Grid.Row="2" />
-        <Button Text="Italic placeholder effect"
-                Clicked="OnItalicPlaceholderButtonClicked"
-                Grid.Row="3" />
-        <Button Text="Remove border effect"
-                Clicked="OnRemoveBorderButtonClicked"
-                Grid.Row="4" />
-        <Button Text="Remove line effect"
-                Clicked="OnRemoveLineButtonClicked"
-                Grid.Row="5" />
-        <Button Text="Select all text effect"
-                Clicked="OnSelectAllTextButtonClicked"
-                Grid.Row="6" />
-    </Grid>
+            <BoxView HeightRequest="1" Color="LightGray" Margin="-10, 20"/>
+
+            <Label Text="Adds an italic placeholder to an Entry"/>
+            <Entry Placeholder="start typing..." VerticalOptions="Start">
+                <Entry.Effects>
+                    <effects:EntryItalicPlaceholder />
+                </Entry.Effects>
+            </Entry>
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="-10, 20"/>
+
+            <Label Text="Removes the border from an Entry"/>
+            <Entry Placeholder="start typing..." VerticalOptions="Start">
+                <Entry.Effects>
+                    <effects:EntryRemoveBorder />
+                </Entry.Effects>
+            </Entry>
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="-10, 20"/>
+
+            <Label Text="Removes the bottom line from an Entry"/>
+            <Entry Placeholder="start typing..." VerticalOptions="Start">
+                <Entry.Effects>
+                    <effects:EntryRemoveLine />
+                </Entry.Effects>
+            </Entry>
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="-10, 20"/>
+
+            <Label Text="Select all entered text from an Entry" />
+            <Entry Placeholder="start typing..." VerticalOptions="Start"
+               Text="Tap inside the entry to select this text">
+                <Entry.Effects>
+                    <effects:EntrySelectAllText />
+                </Entry.Effects>
+            </Entry>
+        </StackLayout>        
+    </ScrollView>
 </ContentPage>

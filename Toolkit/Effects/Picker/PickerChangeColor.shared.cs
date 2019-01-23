@@ -1,7 +1,6 @@
 ﻿using System.Linq;
-using Xamarin.Forms;
 
-namespace Xamarin.Toolkit.Effects
+namespace Xamarin.Forms.Toolkit.Effects
 {
     public static class PickerChangeColor
     {

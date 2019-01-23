@@ -16,7 +16,7 @@ namespace Samples.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            Xamarin.Toolkit.Effects.Droid.Effects.Init();
+            Xamarin.Forms.Toolkit.Effects.Droid.Effects.Init();
             LoadApplication(new App());
         }
     }

@@ -1,6 +1,4 @@
-﻿using Xamarin.Forms;
-
-namespace Xamarin.Toolkit.Effects
+﻿namespace Xamarin.Forms.Toolkit.Effects
 {
     public class EntryItalicPlaceholder : RoutingEffect
     {

@@ -1,0 +1,8 @@
+<Namespace Name="Xamarin.Forms.Toolkit">
+  <Docs>
+    <summary>Xamarin.Forms.Toolkit offers controls, converters, behaviors, animations, and more for Xamarin.Forms.</summary>
+    <remarks>
+      <para />
+    </remarks>
+  </Docs>
+</Namespace>

@@ -1,15 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:Xamarin.Forms.Toolkit.Effects;assembly=Xamarin.Forms.Toolkit"
              x:Class="Xamarin.Samples.Views.EffectsSwitchPage"
              Title="Switch effects">
-    <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <ScrollView Padding="10">
+        <StackLayout Spacing="10">
 
-        <Button Text="Change color effect"
-                Clicked="OnChangeColorButtonClicked"
-                Grid.Row="0" />
-    </Grid>
+            <Label Text="Changes the toggle colors of a switch"
+               Grid.Row="0" />
+            <Switch effects:SwitchChangeColor.FalseColor="#AAEE00"
+                effects:SwitchChangeColor.TrueColor="Blue" />
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

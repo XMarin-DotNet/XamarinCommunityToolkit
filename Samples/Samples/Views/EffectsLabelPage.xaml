@@ -1,14 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:Xamarin.Forms.Toolkit.Effects;assembly=Xamarin.Forms.Toolkit"
              x:Class="Xamarin.Samples.Views.EffectsLabelPage">
-    <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <ScrollView Padding="10">
+        <StackLayout Spacing="10">
 
-        <Button Text="Size font to fit effect"
-                Clicked="OnSizeFontToFitButtonClicked"
-                Grid.Row="0" />
-    </Grid>
+            <Label Text="Size font to fit label"/>
+
+            <Label Text="Size font to fit label now with long text to see the difference in font size"
+               Grid.Row="1">
+                <Label.Effects>
+                    <effects:LabelSizeFontToFit />
+                </Label.Effects>
+            </Label>
+
+            <Label Text="Size font to fit label now with long text to see the difference in font size" />
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

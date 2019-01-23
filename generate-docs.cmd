@@ -1,0 +1,1 @@
+msbuild /restore /t:rebuild;mdocupdatedocs /p:Configuration=Docs /p:ContinuousIntegrationBuild=false Toolkit/Toolkit.csproj

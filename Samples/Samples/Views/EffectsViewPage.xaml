@@ -2,14 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xamarin.Samples.Views.EffectsViewPage"
-             Title="View effects">
-    <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+             xmlns:effects="clr-namespace:Xamarin.Forms.Toolkit.Effects;assembly=Xamarin.Forms.Toolkit"
+             Title="View effects"
+             BackgroundColor="DarkGray">
+    <ScrollView Padding="10">
+        <StackLayout Spacing="10">
 
-        <Button Text="Blur image view effect"
-                Clicked="OnBlurImageButtonClicked"
-                Grid.Row="0" />
-    </Grid>
+            <Label Text="Blur a view containing an image" />
+
+            <Slider x:Name="BlurSlider" Minimum="0" Maximum="25" />
+            <Image BindingContext="{x:Reference BlurSlider}"
+                   Source="{OnPlatform UWP='Assets/xamarin_logo.png', Default='xamarin_logo.png'}"
+                   effects:ViewBlur.BlurAmount="{Binding Value}" />
+
+            <Image Source="{OnPlatform UWP='Assets/xamarin_logo.png', Default='xamarin_logo.png'}"
+               effects:ViewBlur.BlurAmount="10"/>
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

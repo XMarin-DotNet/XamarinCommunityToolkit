@@ -4,11 +4,11 @@ using Android.Graphics.Drawables.Shapes;
 using Android.Runtime;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using PlatformEffects = Xamarin.Toolkit.Effects.Droid;
-using RoutingEffects = Xamarin.Toolkit.Effects;
+using PlatformEffects = Xamarin.Forms.Toolkit.Effects.Droid;
+using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
 
 [assembly: ExportEffect(typeof(PlatformEffects.EntryRemoveLine), nameof(RoutingEffects.EntryRemoveLine))]
-namespace Xamarin.Toolkit.Effects.Droid
+namespace Xamarin.Forms.Toolkit.Effects.Droid
 {
     [Preserve(AllMembers = true)]
     public class EntryRemoveLine : PlatformEffect

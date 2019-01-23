@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage  xmlns="http://xamarin.com/schemas/2014/forms"
+<CarouselPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Xamarin.Samples.Views.AnimationsPage"
-             xmlns:animation="clr-namespace:Xamarin.Toolkit.Animations;assembly=Xamarin.Toolkit.Animations" 
+             xmlns:animation="clr-namespace:Xamarin.Forms.Toolkit.Animations;assembly=Xamarin.Forms.Toolkit" 
              Title="Animations">
-    <TabbedPage.Resources>
+    <CarouselPage.Resources>
         <ResourceDictionary>
 
             <animation:BounceInAnimation
@@ -84,8 +84,8 @@
             </animation:StoryBoard>
 
         </ResourceDictionary>
-    </TabbedPage.Resources>
-    <TabbedPage.Children>
+    </CarouselPage.Resources>
+    <CarouselPage.Children>
         <ContentPage Title="Bounce">
             <Grid>
                 <Grid.RowDefinitions>
@@ -444,5 +444,5 @@
                     Text="Animate" />
             </Grid>
         </ContentPage>
-    </TabbedPage.Children>
-</TabbedPage>
+    </CarouselPage.Children>
+</CarouselPage>

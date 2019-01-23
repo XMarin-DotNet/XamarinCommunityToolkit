@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 
-namespace Xamarin.Toolkit.Effects.UWP
+namespace Xamarin.Forms.Toolkit.Effects.UWP
 {
     static class VisualTreeExtensions
     {

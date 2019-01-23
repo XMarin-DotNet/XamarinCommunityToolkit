@@ -18,7 +18,7 @@ namespace Samples.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
-            Xamarin.Toolkit.Effects.iOS.Effects.Init();
+            Xamarin.Forms.Toolkit.Effects.iOS.Effects.Init();
 
             LoadApplication(new App());
 

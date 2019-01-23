@@ -3,11 +3,11 @@ using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.UWP;
-using PlatformEffects = Xamarin.Toolkit.Effects.UWP;
-using RoutingEffects = Xamarin.Toolkit.Effects;
+using PlatformEffects = Xamarin.Forms.Toolkit.Effects.UWP;
+using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
 
 [assembly: ExportEffect(typeof(PlatformEffects.EntrySelectAllText), nameof(RoutingEffects.EntrySelectAllText))]
-namespace Xamarin.Toolkit.Effects.UWP
+namespace Xamarin.Forms.Toolkit.Effects.UWP
 {
     [Preserve]
     public class EntrySelectAllText : PlatformEffect

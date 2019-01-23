@@ -9,10 +9,5 @@ namespace Xamarin.Samples.Views
         {
             InitializeComponent();
         }
-
-        async void OnChangeColorButtonClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new EffectsSwitchChangeColorPage());
-        }
     }
 }

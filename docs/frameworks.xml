@@ -1,0 +1,6 @@
+<Frameworks>
+  <Framework Name="xamarin-forms-toolkit" Source="xamarin-forms-toolkit" />
+  <Framework Name="xamarin-forms-toolkit-android" Source="xamarin-forms-toolkit-android" />
+  <Framework Name="xamarin-forms-toolkit-ios" Source="xamarin-forms-toolkit-ios" />
+  <Framework Name="xamarin-forms-toolkit-uwp" Source="xamarin-forms-toolkit-uwp" />
+</Frameworks>

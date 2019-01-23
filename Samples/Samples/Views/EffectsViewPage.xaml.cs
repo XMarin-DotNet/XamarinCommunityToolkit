@@ -8,10 +8,5 @@ namespace Xamarin.Samples.Views
         {
             InitializeComponent();
         }
-
-        private async void OnBlurImageButtonClicked(object sender, System.EventArgs e)
-        {
-            await Navigation.PushAsync(new EffectsViewBlurImagePage());
-        }
     }
 }

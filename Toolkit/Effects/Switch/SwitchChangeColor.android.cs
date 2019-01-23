@@ -1,36 +1,34 @@
 ﻿using Android.Graphics;
+using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Color = Xamarin.Forms.Color;
-using PlatformEffects = Xamarin.Toolkit.Effects.Droid;
-using RoutingEffects = Xamarin.Toolkit.Effects;
-using Switch = Android.Widget.Switch;
+using AndroidSwitch = Android.Widget.Switch;
+using FormsColor = Xamarin.Forms.Color;
+using FormsSwitch = Xamarin.Forms.Switch;
+using PlatformEffects = Xamarin.Forms.Toolkit.Effects.Droid;
+using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
 
 [assembly: ExportEffect(typeof(PlatformEffects.SwitchChangeColor), nameof(RoutingEffects.SwitchChangeColorEffect))]
-namespace Xamarin.Toolkit.Effects.Droid
+namespace Xamarin.Forms.Toolkit.Effects.Droid
 {
-    /// <summary>
-    /// http://stackoverflow.com/questions/11253512/change-on-color-of-a-switch
-    /// </summary>
     [Preserve(AllMembers = true)]
     public class SwitchChangeColor : PlatformEffect
     {
-        Color trueColor;
-        Color falseColor;
+        FormsColor trueColor;
+        FormsColor falseColor;
 
         protected override void OnAttached()
         {
-            if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.JellyBean)
+            if (Platform.HasApiLevel(BuildVersionCodes.JellyBean))
             {
-                trueColor = (Color)Element.GetValue(RoutingEffects.SwitchChangeColor.TrueColorProperty);
-                falseColor = (Color)Element.GetValue(RoutingEffects.SwitchChangeColor.FalseColorProperty);
+                trueColor = (FormsColor)Element.GetValue(RoutingEffects.SwitchChangeColor.TrueColorProperty);
+                falseColor = (FormsColor)Element.GetValue(RoutingEffects.SwitchChangeColor.FalseColorProperty);
 
                 ((SwitchCompat)Control).CheckedChange += OnCheckedChange;
 
-                // Supported formats for Parse are: #RRGGBB #AARRGGBB 'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta', 'yellow', 'lightgray', 'darkgray'
                 var isChecked = ((SwitchCompat)Control).Checked;
                 var startingColor = isChecked ? trueColor : falseColor;
                 ((SwitchCompat)Control).ThumbDrawable.SetColorFilter(startingColor.ToAndroid(), PorterDuff.Mode.Multiply);
@@ -48,14 +46,14 @@ namespace Xamarin.Toolkit.Effects.Droid
                 ((SwitchCompat)Control).ThumbDrawable.SetColorFilter(falseColor.ToAndroid(), PorterDuff.Mode.Multiply);
             }
 
-            ((Forms.Switch)Element).IsToggled = checkedChangeEventArgs.IsChecked;
+            ((FormsSwitch)Element).IsToggled = checkedChangeEventArgs.IsChecked;
         }
 
         protected override void OnDetached()
         {
-            if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.JellyBean && global::Android.OS.Build.VERSION.SdkInt < global::Android.OS.BuildVersionCodes.LollipopMr1)
+            if (Platform.HasApiLevel(BuildVersionCodes.JellyBean) && Build.VERSION.SdkInt < BuildVersionCodes.LollipopMr1)
             {
-                ((Switch)Control).CheckedChange -= OnCheckedChange;
+                ((AndroidSwitch)Control).CheckedChange -= OnCheckedChange;
             }
         }
     }

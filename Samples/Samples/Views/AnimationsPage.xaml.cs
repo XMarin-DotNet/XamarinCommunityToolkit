@@ -1,10 +1,9 @@
 ﻿using Xamarin.Forms;
-using Xamarin.Toolkit.Animations;
-using Xamarin.Toolkit.Animations.Extensions;
+using Xamarin.Forms.Toolkit.Animations;
 
 namespace Xamarin.Samples.Views
 {
-    public partial class AnimationsPage : TabbedPage
+    public partial class AnimationsPage : CarouselPage
     {
         public AnimationsPage()
         {
@@ -14,6 +13,14 @@ namespace Xamarin.Samples.Views
             {
                 await AnimationBox.Animate(new HeartAnimation());
             };
+
+            Title = CurrentPage?.Title ?? string.Empty;
+        }
+
+        protected override void OnCurrentPageChanged()
+        {
+            base.OnCurrentPageChanged();
+            Title = CurrentPage.Title;
         }
     }
 }
