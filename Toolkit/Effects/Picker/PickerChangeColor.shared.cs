@@ -33,7 +33,7 @@ namespace Xamarin.Forms.Toolkit.Effects
     public class PickerChangeColorEffect : RoutingEffect
     {
         public PickerChangeColorEffect()
-            : base(EffectIds.PickerChangeColor)
+            : base(Ids.PickerChangeColor)
         {
         }
     }

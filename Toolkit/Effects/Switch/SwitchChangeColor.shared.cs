@@ -38,7 +38,7 @@ namespace Xamarin.Forms.Toolkit.Effects
     public class SwitchChangeColorEffect : RoutingEffect
     {
         public SwitchChangeColorEffect()
-            : base(EffectIds.SwitchChangeColor)
+            : base(Ids.SwitchChangeColor)
         {
         }
     }

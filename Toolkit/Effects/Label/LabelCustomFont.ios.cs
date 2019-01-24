@@ -1,16 +1,16 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.iOS;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.LabelCustomFont), nameof(RoutingEffects.LabelCustomFont))]
-namespace Xamarin.Forms.Toolkit.Effects.iOS
+[assembly: ExportEffect(typeof(LabelCustomFontPlatform), nameof(LabelCustomFont))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class LabelCustomFont : PlatformEffect
+    class LabelCustomFontPlatform : PlatformEffect
     {
-        RoutingEffects.LabelCustomFont effect;
+        LabelCustomFont effect;
 
         protected override void OnAttached()
         {
@@ -19,22 +19,30 @@ namespace Xamarin.Forms.Toolkit.Effects.iOS
             if (control == null)
                 return;
 
-            effect = (RoutingEffects.LabelCustomFont)Element.Effects.FirstOrDefault(item => item is RoutingEffects.LabelCustomFont);
+            effect = (LabelCustomFont)Element.Effects.FirstOrDefault(item => item is LabelCustomFont);
             if (effect != null && !string.IsNullOrWhiteSpace(effect.FontPath))
                 control.Font = UIFont.FromName(effect.FontFamilyName, control.Font.PointSize);
+        }
 
+        protected override void OnElementPropertyChanged(PropertyChangedEventArgs args)
+        {
             // After one of these properties change, reapply the custom font
             // As per https://bugzilla.xamarin.com/show_bug.cgi?id=33666
-            Element.PropertyChanged += (sender, e) =>
+
+            var control = Control as UILabel;
+
+            if (control == null)
+                return;
+
+            if (args.PropertyName == Label.TextColorProperty.PropertyName
+                   || args.PropertyName == Label.FontProperty.PropertyName
+                   || args.PropertyName == Label.TextProperty.PropertyName
+                   || args.PropertyName == Label.FormattedTextProperty.PropertyName)
             {
-                if (e.PropertyName == Label.TextColorProperty.PropertyName
-                    || e.PropertyName == Label.FontProperty.PropertyName
-                    || e.PropertyName == Label.TextProperty.PropertyName
-                    || e.PropertyName == Label.FormattedTextProperty.PropertyName)
-                {
-                    control.Font = UIFont.FromName(effect.FontFamilyName, control.Font.PointSize);
-                }
-            };
+                control.Font = UIFont.FromName(effect.FontFamilyName, control.Font.PointSize);
+            }
+
+            base.OnElementPropertyChanged(args);
         }
 
         protected override void OnDetached()

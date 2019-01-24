@@ -3,7 +3,7 @@
     public class LabelSizeFontToFit : RoutingEffect
     {
         public LabelSizeFontToFit()
-            : base(EffectIds.LabelSizeFontToFit)
+            : base(Ids.LabelSizeFontToFit)
         {
         }
     }

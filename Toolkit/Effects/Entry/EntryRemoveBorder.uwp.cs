@@ -1,13 +1,12 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.UWP;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.EntryRemoveBorder), nameof(RoutingEffects.EntryRemoveBorder))]
-namespace Xamarin.Forms.Toolkit.Effects.UWP
+[assembly: ExportEffect(typeof(EntryRemoveBorderPlatform), nameof(EntryRemoveBorder))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class EntryRemoveBorder : PlatformEffect
+    class EntryRemoveBorderPlatform : PlatformEffect
     {
         Windows.UI.Xaml.Thickness old;
 

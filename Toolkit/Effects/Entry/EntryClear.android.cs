@@ -3,17 +3,14 @@ using Android.Views;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.Droid;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.EntryClear), nameof(RoutingEffects.EntryClear))]
-namespace Xamarin.Forms.Toolkit.Effects.Droid
+[assembly: ExportEffect(typeof(EntryClearPlatform), nameof(EntryClear))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]
-    public class EntryClear : PlatformEffect
+    class EntryClearPlatform : PlatformEffect
     {
-        public static int DrawableId { get; set; } = -1;
-
         protected override void OnAttached()
         {
             ConfigureControl();
@@ -32,7 +29,7 @@ namespace Xamarin.Forms.Toolkit.Effects.Droid
             if (!(Control is EditText editText))
                 return;
 
-            var id = DrawableId != -1 ? DrawableId : global::Android.Resource.Drawable.IcMenuCloseClearCancel;
+            var id = EntryClear.DrawableId != -1 ? EntryClear.DrawableId : global::Android.Resource.Drawable.IcMenuCloseClearCancel;
             editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, id, 0);
             editText.SetOnTouchListener(new OnDrawableTouchListener());
         }
@@ -42,14 +39,16 @@ namespace Xamarin.Forms.Toolkit.Effects.Droid
     {
         public bool OnTouch(global::Android.Views.View v, MotionEvent e)
         {
-            if (v is EditText && e.Action == MotionEventActions.Up)
+            if (e.Action != MotionEventActions.Up)
+                return false;
+
+            if (!(v is EditText editText))
+                return false;
+
+            if (e.RawX >= (editText.Right - editText.GetCompoundDrawables()[2].Bounds.Width()))
             {
-                var editText = (EditText)v;
-                if (e.RawX >= (editText.Right - editText.GetCompoundDrawables()[2].Bounds.Width()))
-                {
-                    editText.Text = string.Empty;
-                    return true;
-                }
+                editText.Text = string.Empty;
+                return true;
             }
 
             return false;

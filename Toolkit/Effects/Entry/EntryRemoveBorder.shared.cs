@@ -3,7 +3,7 @@
     public class EntryRemoveBorder : RoutingEffect
     {
         public EntryRemoveBorder()
-            : base(EffectIds.EntryRemoveBorder)
+            : base(Ids.EntryRemoveBorder)
         {
         }
     }

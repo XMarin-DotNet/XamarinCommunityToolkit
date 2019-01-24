@@ -1,22 +1,21 @@
 ﻿using Android.Runtime;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Xamarin.Forms.Toolkit.Effects;
 using AndroidPicker = Android.Widget.EditText;
 using FormsColor = Xamarin.Forms.Color;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.Droid;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.PickerChangeColor), nameof(RoutingEffects.PickerChangeColorEffect))]
-namespace Xamarin.Forms.Toolkit.Effects.Droid
+[assembly: ExportEffect(typeof(PickerChangeColorPlatform), nameof(PickerChangeColorEffect))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]
-    public class PickerChangeColor : PlatformEffect
+    class PickerChangeColorPlatform : PlatformEffect
     {
         FormsColor color;
 
         protected override void OnAttached()
         {
-            color = (FormsColor)Element.GetValue(RoutingEffects.PickerChangeColor.ColorProperty);
+            color = (FormsColor)Element.GetValue(PickerChangeColor.ColorProperty);
             ((AndroidPicker)Control).SetHintTextColor(color.ToAndroid());
         }
 

@@ -3,7 +3,7 @@
     public class EntryItalicPlaceholder : RoutingEffect
     {
         public EntryItalicPlaceholder()
-            : base(EffectIds.EntryItalicPlaceholder)
+            : base(Ids.EntryItalicPlaceholder)
         {
         }
     }

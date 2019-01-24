@@ -3,13 +3,12 @@ using Android.Graphics;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.Droid;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.LabelCustomFont), nameof(RoutingEffects.LabelCustomFont))]
-namespace Xamarin.Forms.Toolkit.Effects.Droid
+[assembly: ExportEffect(typeof(LabelCustomFontPlatform), nameof(LabelCustomFont))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class LabelCustomFont : PlatformEffect
+    class LabelCustomFontPlatform : PlatformEffect
     {
         protected override void OnAttached()
         {
@@ -18,7 +17,7 @@ namespace Xamarin.Forms.Toolkit.Effects.Droid
             if (control == null)
                 return;
 
-            var effect = (RoutingEffects.LabelCustomFont)Element.Effects.FirstOrDefault(item => item is RoutingEffects.LabelCustomFont);
+            var effect = (LabelCustomFont)Element.Effects.FirstOrDefault(item => item is LabelCustomFont);
             if (effect != null && !string.IsNullOrWhiteSpace(effect.FontPath))
             {
 #pragma warning disable CS0618 // Type or member is obsolete

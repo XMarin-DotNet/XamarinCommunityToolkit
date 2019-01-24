@@ -2,14 +2,13 @@
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.iOS;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.EntryClear), nameof(RoutingEffects.EntryClear))]
-namespace Xamarin.Forms.Toolkit.Effects.iOS
+[assembly: ExportEffect(typeof(EntryClearPlatform), nameof(EntryClear))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]
-    public class EntryClear : PlatformEffect
+    class EntryClearPlatform : PlatformEffect
     {
         UITextFieldViewMode old;
 

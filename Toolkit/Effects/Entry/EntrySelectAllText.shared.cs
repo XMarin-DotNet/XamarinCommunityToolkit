@@ -3,7 +3,7 @@
     public class EntrySelectAllText : RoutingEffect
     {
         public EntrySelectAllText()
-            : base(EffectIds.EntrySelectAllText)
+            : base(Ids.EntrySelectAllText)
         {
         }
     }

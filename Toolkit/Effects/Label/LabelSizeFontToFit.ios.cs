@@ -2,15 +2,13 @@
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.iOS;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.LabelSizeFontToFit), nameof(RoutingEffects.LabelSizeFontToFit))]
-
-namespace Xamarin.Forms.Toolkit.Effects.iOS
+[assembly: ExportEffect(typeof(LabelSizeFontToFitPlatform), nameof(LabelSizeFontToFit))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]
-    public class LabelSizeFontToFit : PlatformEffect
+    class LabelSizeFontToFitPlatform : PlatformEffect
     {
         protected override void OnAttached()
         {

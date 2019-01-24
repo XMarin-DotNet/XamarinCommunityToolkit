@@ -5,17 +5,16 @@ using Android.Support.V7.Widget;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Xamarin.Forms.Toolkit.Effects;
 using AndroidSwitch = Android.Widget.Switch;
 using FormsColor = Xamarin.Forms.Color;
 using FormsSwitch = Xamarin.Forms.Switch;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.Droid;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.SwitchChangeColor), nameof(RoutingEffects.SwitchChangeColorEffect))]
-namespace Xamarin.Forms.Toolkit.Effects.Droid
+[assembly: ExportEffect(typeof(SwitchChangeColorPlatform), nameof(SwitchChangeColorEffect))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]
-    public class SwitchChangeColor : PlatformEffect
+    class SwitchChangeColorPlatform : PlatformEffect
     {
         FormsColor trueColor;
         FormsColor falseColor;
@@ -24,8 +23,8 @@ namespace Xamarin.Forms.Toolkit.Effects.Droid
         {
             if (Platform.HasApiLevel(BuildVersionCodes.JellyBean))
             {
-                trueColor = (FormsColor)Element.GetValue(RoutingEffects.SwitchChangeColor.TrueColorProperty);
-                falseColor = (FormsColor)Element.GetValue(RoutingEffects.SwitchChangeColor.FalseColorProperty);
+                trueColor = (FormsColor)Element.GetValue(SwitchChangeColor.TrueColorProperty);
+                falseColor = (FormsColor)Element.GetValue(SwitchChangeColor.FalseColorProperty);
 
                 ((SwitchCompat)Control).CheckedChange += OnCheckedChange;
 

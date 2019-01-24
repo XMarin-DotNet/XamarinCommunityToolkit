@@ -1,21 +1,23 @@
 ﻿using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using Color = Xamarin.Forms.Color;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.iOS;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
+using FormsColor = Xamarin.Forms.Color;
 
-[assembly: ExportEffect(typeof(PlatformEffects.PickerChangeColor), nameof(RoutingEffects.PickerChangeColorEffect))]
-namespace Xamarin.Forms.Toolkit.Effects.iOS
+[assembly: ExportEffect(typeof(PickerChangeColorPlatform), nameof(PickerChangeColorEffect))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class PickerChangeColor : PlatformEffect
+    class PickerChangeColorPlatform : PlatformEffect
     {
-        Color color;
+        FormsColor color;
 
         protected override void OnAttached()
         {
-            color = (Color)Element.GetValue(RoutingEffects.PickerChangeColor.ColorProperty);
-            (Control as UITextField).AttributedPlaceholder = new Foundation.NSAttributedString((Control as UITextField).AttributedPlaceholder.Value, foregroundColor: color.ToUIColor());
+            if (!(Control is UITextField control))
+                return;
+
+            color = (FormsColor)Element.GetValue(PickerChangeColor.ColorProperty);
+            control.AttributedPlaceholder = new Foundation.NSAttributedString(control.AttributedPlaceholder.Value, foregroundColor: color.ToUIColor());
         }
 
         protected override void OnDetached()

@@ -5,7 +5,7 @@
         public int Lines { get; set; }
 
         public LabelMultiLine()
-            : base(EffectIds.LabelMultiLine)
+            : base(Ids.LabelMultiLine)
         {
         }
     }

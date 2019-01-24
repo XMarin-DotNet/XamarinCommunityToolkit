@@ -3,13 +3,12 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.UWP;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.LabelMultiLine), nameof(RoutingEffects.LabelMultiLine))]
-namespace Xamarin.Forms.Toolkit.Effects.UWP
+[assembly: ExportEffect(typeof(LabelMultiLinePlatform), nameof(LabelMultiLine))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class LabelMultiLine : PlatformEffect
+    class LabelMultiLinePlatform : PlatformEffect
     {
         int initialeLines;
         TextWrapping initialTextWrapping;
@@ -26,7 +25,7 @@ namespace Xamarin.Forms.Toolkit.Effects.UWP
             initialeLines = control.MaxLines;
             initialTextWrapping = control.TextWrapping;
 
-            var effect = (RoutingEffects.LabelMultiLine)Element.Effects.FirstOrDefault(item => item is RoutingEffects.LabelMultiLine);
+            var effect = (LabelMultiLine)Element.Effects.FirstOrDefault(item => item is LabelMultiLine);
             if (effect != null && effect.Lines > 0)
             {
                 control.MaxLines = effect.Lines;

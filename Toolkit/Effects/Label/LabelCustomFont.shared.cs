@@ -7,7 +7,7 @@
         public string FontFamilyName { get; set; }
 
         public LabelCustomFont()
-            : base(EffectIds.LabelCustomFont)
+            : base(Ids.LabelCustomFont)
         {
         }
     }

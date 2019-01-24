@@ -4,7 +4,7 @@
 
 namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class EffectIds
+    public static class Ids
     {
         public static string ViewBlur => typeof(ViewBlurEffect).FullName;
 

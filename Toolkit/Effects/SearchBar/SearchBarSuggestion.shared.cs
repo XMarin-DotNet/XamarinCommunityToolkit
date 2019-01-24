@@ -44,7 +44,7 @@ namespace Xamarin.Forms.Toolkit.Effects
     public class SearchBarSuggestionEffect : RoutingEffect
     {
         public SearchBarSuggestionEffect()
-            : base(EffectIds.SearchBarSuggestion)
+            : base(Ids.SearchBarSuggestion)
         {
         }
     }

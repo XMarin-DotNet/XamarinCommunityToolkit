@@ -9,7 +9,7 @@ using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
 namespace Xamarin.Forms.Toolkit.Effects.iOS
 {
     [Preserve(AllMembers = true)]
-    public class EntryRemoveBorder : PlatformEffect
+    class EntryRemoveBorder : PlatformEffect
     {
         UITextBorderStyle old;
 

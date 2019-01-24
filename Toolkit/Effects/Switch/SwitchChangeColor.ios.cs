@@ -1,13 +1,12 @@
 ﻿using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.iOS;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.SwitchChangeColor), nameof(RoutingEffects.SwitchChangeColorEffect))]
-namespace Xamarin.Forms.Toolkit.Effects.iOS
+[assembly: ExportEffect(typeof(SwitchChangeColorPlatform), nameof(SwitchChangeColorEffect))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class SwitchChangeColor : PlatformEffect
+    class SwitchChangeColorPlatform : PlatformEffect
     {
         Color trueColor;
         Color falseColor;
@@ -18,8 +17,8 @@ namespace Xamarin.Forms.Toolkit.Effects.iOS
             if (uiSwitch == null)
                 return;
 
-            trueColor = (Color)Element.GetValue(RoutingEffects.SwitchChangeColor.TrueColorProperty);
-            falseColor = (Color)Element.GetValue(RoutingEffects.SwitchChangeColor.FalseColorProperty);
+            trueColor = (Color)Element.GetValue(SwitchChangeColor.TrueColorProperty);
+            falseColor = (Color)Element.GetValue(SwitchChangeColor.FalseColorProperty);
 
             if (falseColor != Color.Transparent)
             {

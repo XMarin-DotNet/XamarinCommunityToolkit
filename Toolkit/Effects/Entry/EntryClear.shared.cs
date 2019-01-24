@@ -2,8 +2,12 @@
 {
     public class EntryClear : RoutingEffect
     {
+#if __ANDROID__
+        public static int DrawableId { get; set; } = -1;
+#endif
+
         public EntryClear()
-            : base(EffectIds.EntryClear)
+            : base(Ids.EntryClear)
         {
         }
     }

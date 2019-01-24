@@ -34,7 +34,7 @@ namespace Xamarin.Forms.Toolkit.Effects
     public class ViewBlurEffect : RoutingEffect
     {
         public ViewBlurEffect()
-            : base(EffectIds.ViewBlur)
+            : base(Ids.ViewBlur)
         {
         }
     }

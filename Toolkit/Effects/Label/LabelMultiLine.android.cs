@@ -2,13 +2,12 @@
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using PlatformEffects = Xamarin.Forms.Toolkit.Effects.Droid;
-using RoutingEffects = Xamarin.Forms.Toolkit.Effects;
+using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(PlatformEffects.LabelMultiLine), nameof(RoutingEffects.LabelMultiLine))]
-namespace Xamarin.Forms.Toolkit.Effects.Droid
+[assembly: ExportEffect(typeof(LabelMultiLinePlatform), nameof(LabelMultiLine))]
+namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class LabelMultiLine : PlatformEffect
+    class LabelMultiLinePlatform : PlatformEffect
     {
         protected override void OnAttached()
         {
@@ -17,7 +16,7 @@ namespace Xamarin.Forms.Toolkit.Effects.Droid
             if (control == null)
                 return;
 
-            var effect = (RoutingEffects.LabelMultiLine)Element.Effects.FirstOrDefault(item => item is RoutingEffects.LabelMultiLine);
+            var effect = (LabelMultiLine)Element.Effects.FirstOrDefault(item => item is LabelMultiLine);
             if (effect != null && effect.Lines > 0)
             {
                 control.SetSingleLine(false);

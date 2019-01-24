@@ -3,7 +3,7 @@
     public class EntryRemoveLine : RoutingEffect
     {
         public EntryRemoveLine()
-            : base(EffectIds.EntryRemoveLine)
+            : base(Ids.EntryRemoveLine)
         {
         }
     }
