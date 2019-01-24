@@ -6,6 +6,8 @@ namespace Xamarin.Forms.Toolkit.Effects
 {
     public static class Ids
     {
+        public static string ListViewSelectionOnTop => typeof(ListViewSelectionOnTop).FullName;
+
         public static string ViewBlur => typeof(ViewBlurEffect).FullName;
 
         public static string SwitchChangeColor => typeof(SwitchChangeColorEffect).FullName;
