@@ -5,8 +5,8 @@ namespace Xamarin.Forms.Toolkit.Effects
 {
     public static class SearchBarSuggestion
     {
-        public static readonly BindableProperty SuggestionsProperty = BindableProperty.CreateAttached("Suggestions", typeof(ObservableCollection<string>), typeof(SearchBarSuggestion), new ObservableCollection<string>(), propertyChanged: OnSuggestionsChanged);
-        public static readonly BindableProperty TextChangedActionProperty = BindableProperty.CreateAttached("TextChangedAction", typeof(Action), typeof(SearchBarSuggestion), null, propertyChanged: OnTextChangedActionChanged);
+        public static readonly BindableProperty SuggestionsProperty = BindableProperty.CreateAttached("Suggestions", typeof(ObservableCollection<string>), typeof(SearchBarSuggestionEffect), new ObservableCollection<string>(), propertyChanged: OnSuggestionsChanged);
+        public static readonly BindableProperty TextChangedActionProperty = BindableProperty.CreateAttached("TextChangedAction", typeof(Action), typeof(SearchBarSuggestionEffect), null, propertyChanged: OnTextChangedActionChanged);
 
         public static ObservableCollection<string> GetSuggestions(BindableObject view)
         {

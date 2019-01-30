@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(EntryClearPlatform), nameof(EntryClear))]
+[assembly: ExportEffect(typeof(EntryClearPlatform), nameof(EntryClearEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]

@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(LabelCustomFontPlatform), nameof(LabelCustomFont))]
+[assembly: ExportEffect(typeof(LabelCustomFontPlatform), nameof(LabelCustomFontEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     class LabelCustomFontPlatform : PlatformEffect
@@ -17,7 +17,7 @@ namespace Xamarin.Forms.Toolkit.Effects
             if (control == null)
                 return;
 
-            var effect = (LabelCustomFont)Element.Effects.FirstOrDefault(item => item is LabelCustomFont);
+            var effect = (LabelCustomFontEffect)Element.Effects.FirstOrDefault(item => item is LabelCustomFontEffect);
             if (effect != null && !string.IsNullOrWhiteSpace(effect.FontPath))
             {
 #pragma warning disable CS0618 // Type or member is obsolete

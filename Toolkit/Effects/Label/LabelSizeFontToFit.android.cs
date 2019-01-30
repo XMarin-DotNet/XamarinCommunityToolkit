@@ -7,7 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(LabelSizeFontToFitPlatform), nameof(LabelSizeFontToFit))]
+[assembly: ExportEffect(typeof(LabelSizeFontToFitPlatform), nameof(LabelSizeFontToFitEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     class ShrinkTextOnLayoutChangeListener : Java.Lang.Object, global::Android.Views.View.IOnLayoutChangeListener

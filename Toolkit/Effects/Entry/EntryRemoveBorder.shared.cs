@@ -1,8 +1,8 @@
 ﻿namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class EntryRemoveBorder : RoutingEffect
+    public class EntryRemoveBorderEffect : RoutingEffect
     {
-        public EntryRemoveBorder()
+        public EntryRemoveBorderEffect()
             : base(Ids.EntryRemoveBorder)
         {
         }

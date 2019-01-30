@@ -12,7 +12,15 @@ You will need to complete a Contribution License Agreement before any pull reque
 
 ## Contributing Code
 
-Check out [A Beginner's Guide for Contributing to Xamarin.Forms.Toolkit](https://github.com/Xamarin.Forms.Toolkit/wiki/A-Beginner's-Guide-for-Contributing-to-Xamarin.Forms.Toolkit).
+### Style Guide
+
+#### Effects
+
+Given the feature name `LabelShadow` the file names should be `LabelShadow` and the class names should be:
+
+* PlatformEffect (.platform): LabelShadowPlatform
+* RoutingEffect (.shared): LabelShadowEffect
+* Attached Properties (.shared): LabelShadow
 
 ## Documentation - mdoc
 

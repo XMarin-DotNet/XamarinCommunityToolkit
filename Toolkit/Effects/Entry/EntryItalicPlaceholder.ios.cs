@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(EntryItalicPlaceholderPlatform), nameof(EntryItalicPlaceholder))]
+[assembly: ExportEffect(typeof(EntryItalicPlaceholderPlatform), nameof(EntryItalicPlaceholderEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]

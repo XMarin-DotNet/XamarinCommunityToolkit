@@ -5,7 +5,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.UWP;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(EntrySelectAllTextPlatform), nameof(EntrySelectAllText))]
+[assembly: ExportEffect(typeof(EntrySelectAllTextPlatform), nameof(EntrySelectAllTextEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve]

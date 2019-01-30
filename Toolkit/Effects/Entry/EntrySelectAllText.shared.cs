@@ -1,8 +1,8 @@
 ﻿namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class EntrySelectAllText : RoutingEffect
+    public class EntrySelectAllTextEffect : RoutingEffect
     {
-        public EntrySelectAllText()
+        public EntrySelectAllTextEffect()
             : base(Ids.EntrySelectAllText)
         {
         }

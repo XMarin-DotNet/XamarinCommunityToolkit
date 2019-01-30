@@ -4,10 +4,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(LabelMultiLinePlatform), nameof(LabelMultiLine))]
+[assembly: ExportEffect(typeof(LabelMultilinePlatform), nameof(LabelMultilineEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
-    class LabelMultiLinePlatform : PlatformEffect
+    class LabelMultilinePlatform : PlatformEffect
     {
         protected override void OnAttached()
         {
@@ -16,7 +16,7 @@ namespace Xamarin.Forms.Toolkit.Effects
             if (control == null)
                 return;
 
-            var effect = (LabelMultiLine)Element.Effects.FirstOrDefault(item => item is LabelMultiLine);
+            var effect = (LabelMultilineEffect)Element.Effects.FirstOrDefault(item => item is LabelMultilineEffect);
             if (effect != null && effect.Lines > 0)
             {
                 control.SetSingleLine(false);

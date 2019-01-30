@@ -6,7 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(ListViewSelectionOnTopPlatform), nameof(ListViewSelectionOnTop))]
+[assembly: ExportEffect(typeof(ListViewSelectionOnTopPlatform), nameof(ListViewSelectionOnTopEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]

@@ -2,9 +2,9 @@
 
 namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class ListViewSelectionOnTop : RoutingEffect
+    public class ListViewSelectionOnTopEffect : RoutingEffect
     {
-        public ListViewSelectionOnTop()
+        public ListViewSelectionOnTopEffect()
             : base(Ids.ListViewSelectionOnTop)
         {
         }

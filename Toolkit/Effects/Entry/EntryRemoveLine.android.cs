@@ -6,7 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(EntryRemoveLinePlatform), nameof(EntryRemoveLine))]
+[assembly: ExportEffect(typeof(EntryRemoveLinePlatform), nameof(EntryRemoveLineEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]

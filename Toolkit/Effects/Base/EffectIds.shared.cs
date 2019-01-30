@@ -6,7 +6,9 @@ namespace Xamarin.Forms.Toolkit.Effects
 {
     public static class Ids
     {
-        public static string ListViewSelectionOnTop => typeof(ListViewSelectionOnTop).FullName;
+        public static string LabelShadow => typeof(LabelShadowEffect).FullName;
+
+        public static string ListViewSelectionOnTop => typeof(ListViewSelectionOnTopEffect).FullName;
 
         public static string ViewBlur => typeof(ViewBlurEffect).FullName;
 
@@ -14,22 +16,22 @@ namespace Xamarin.Forms.Toolkit.Effects
 
         public static string PickerChangeColor => typeof(PickerChangeColorEffect).FullName;
 
-        public static string EntryClear => typeof(EntryClear).FullName;
+        public static string EntryClear => typeof(EntryClearEffect).FullName;
 
-        public static string LabelCustomFont => typeof(LabelCustomFont).FullName;
+        public static string LabelCustomFont => typeof(LabelCustomFontEffect).FullName;
 
-        public static string EntryItalicPlaceholder => typeof(EntryItalicPlaceholder).FullName;
+        public static string EntryItalicPlaceholder => typeof(EntryItalicPlaceholderEffect).FullName;
 
-        public static string LabelMultiLine => typeof(LabelMultiLine).FullName;
+        public static string LabelMultiline => typeof(LabelMultilineEffect).FullName;
 
-        public static string EntryRemoveBorder => typeof(EntryRemoveBorder).FullName;
+        public static string EntryRemoveBorder => typeof(EntryRemoveBorderEffect).FullName;
 
-        public static string EntryRemoveLine => typeof(EntryRemoveLine).FullName;
+        public static string EntryRemoveLine => typeof(EntryRemoveLineEffect).FullName;
 
         public static string SearchBarSuggestion => typeof(SearchBarSuggestionEffect).FullName;
 
-        public static string EntrySelectAllText => typeof(EntrySelectAllText).FullName;
+        public static string EntrySelectAllText => typeof(EntrySelectAllTextEffect).FullName;
 
-        public static string LabelSizeFontToFit => typeof(LabelSizeFontToFit).FullName;
+        public static string LabelSizeFontToFit => typeof(LabelSizeFontToFitEffect).FullName;
     }
 }

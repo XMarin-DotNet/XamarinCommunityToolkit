@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(LabelSizeFontToFitPlatform), nameof(LabelSizeFontToFit))]
+[assembly: ExportEffect(typeof(LabelSizeFontToFitPlatform), nameof(LabelSizeFontToFitEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]

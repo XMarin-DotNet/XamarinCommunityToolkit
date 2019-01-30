@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(EntryClearPlatform), nameof(EntryClear))]
+[assembly: ExportEffect(typeof(EntryClearPlatform), nameof(EntryClearEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     [Preserve(AllMembers = true)]
@@ -29,7 +29,7 @@ namespace Xamarin.Forms.Toolkit.Effects
             if (!(Control is EditText editText))
                 return;
 
-            var id = EntryClear.DrawableId != -1 ? EntryClear.DrawableId : global::Android.Resource.Drawable.IcMenuCloseClearCancel;
+            var id = EntryClearEffect.DrawableId != -1 ? EntryClearEffect.DrawableId : global::Android.Resource.Drawable.IcMenuCloseClearCancel;
             editText.SetCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, id, 0);
             editText.SetOnTouchListener(new OnDrawableTouchListener());
         }

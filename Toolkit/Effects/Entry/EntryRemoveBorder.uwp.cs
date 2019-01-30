@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(EntryRemoveBorderPlatform), nameof(EntryRemoveBorder))]
+[assembly: ExportEffect(typeof(EntryRemoveBorderPlatform), nameof(EntryRemoveBorderEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
     class EntryRemoveBorderPlatform : PlatformEffect

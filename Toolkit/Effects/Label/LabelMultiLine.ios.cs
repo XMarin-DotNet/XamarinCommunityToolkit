@@ -5,10 +5,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms.Toolkit.Effects;
 
-[assembly: ExportEffect(typeof(LabelMultiLinePlatform), nameof(LabelMultiLine))]
+[assembly: ExportEffect(typeof(LabelMultilinePlatform), nameof(LabelMultilineEffect))]
 namespace Xamarin.Forms.Toolkit.Effects
 {
-    class LabelMultiLinePlatform : PlatformEffect
+    class LabelMultilinePlatform : PlatformEffect
     {
         nint initialeLines;
 
@@ -21,7 +21,7 @@ namespace Xamarin.Forms.Toolkit.Effects
 
             initialeLines = control.Lines;
 
-            var effect = (LabelMultiLine)Element.Effects.FirstOrDefault(item => item is LabelMultiLine);
+            var effect = (LabelMultilineEffect)Element.Effects.FirstOrDefault(item => item is LabelMultilineEffect);
             if (effect != null && effect.Lines > 0)
                 control.Lines = effect.Lines;
         }

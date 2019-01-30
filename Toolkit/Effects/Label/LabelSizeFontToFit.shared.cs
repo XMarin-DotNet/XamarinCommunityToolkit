@@ -1,8 +1,8 @@
 ﻿namespace Xamarin.Forms.Toolkit.Effects
 {
-    public class LabelSizeFontToFit : RoutingEffect
+    public class LabelSizeFontToFitEffect : RoutingEffect
     {
-        public LabelSizeFontToFit()
+        public LabelSizeFontToFitEffect()
             : base(Ids.LabelSizeFontToFit)
         {
         }
