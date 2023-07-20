@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using CoreGraphics;
+using Intents;
 using UIKit;
 using Xamarin.CommunityToolkit.Helpers;
 using Xamarin.CommunityToolkit.PlatformConfiguration.iOSSpecific;
@@ -35,6 +36,12 @@ namespace Xamarin.CommunityToolkit.UI.Views
 		[Preserve(Conditional = true)]
 		public PopupRenderer()
 		{
+		}
+
+		[Preserve(Conditional = true)]
+		public PopupRenderer(UIViewController viewController)
+		{
+			ViewController = viewController;
 		}
 
 		public void SetElementSize(Size size) =>
@@ -101,18 +108,21 @@ namespace Xamarin.CommunityToolkit.UI.Views
 
 		protected virtual void OnElementPropertyChanged(object? sender, PropertyChangedEventArgs args)
 		{
-			if (args.PropertyName == BasePopup.VerticalOptionsProperty.PropertyName ||
-				args.PropertyName == BasePopup.HorizontalOptionsProperty.PropertyName)
+			if (Element is BasePopup basePopup && !isDisposed)
 			{
-				SetLayout();
-			}
-			else if (args.PropertyName == BasePopup.SizeProperty.PropertyName)
-			{
-				SetSize();
-			}
-			else if (args.PropertyName == BasePopup.ColorProperty.PropertyName)
-			{
-				SetBackgroundColor();
+				if (args.PropertyName == BasePopup.VerticalOptionsProperty.PropertyName ||
+					args.PropertyName == BasePopup.HorizontalOptionsProperty.PropertyName)
+				{
+					SetLayout();
+				}
+				else if (args.PropertyName == BasePopup.SizeProperty.PropertyName)
+				{
+					SetSize();
+				}
+				else if (args.PropertyName == BasePopup.ColorProperty.PropertyName)
+				{
+					SetBackgroundColor();
+				}
 			}
 
 			ElementPropertyChanged?.Invoke(this, args);
@@ -123,7 +133,7 @@ namespace Xamarin.CommunityToolkit.UI.Views
 			_ = Element ?? throw new InvalidOperationException($"{nameof(Element)} cannot be null");
 
 			var view = Element.Content;
-			var contentPage = new ContentPage { Content = view, Padding = new Thickness(25) };
+			var contentPage = new ContentPage { Content = view };
 
 			Control = Platform.CreateRenderer(contentPage);
 			Platform.SetRenderer(contentPage, Control);
@@ -134,18 +144,27 @@ namespace Xamarin.CommunityToolkit.UI.Views
 		void SetViewController()
 		{
 			IVisualElementRenderer currentPageRenderer;
-			var modalStackCount = Application.Current.MainPage?.Navigation?.ModalStack?.Count ?? 0;
-			var mainPage = Application.Current.MainPage;
-			if (modalStackCount > 0)
+			var page = Application.Current.MainPage;
+			var modalStackCount = page?.Navigation.ModalStack.Count ?? 0;
+			if (modalStackCount > 0 && page is not null)
 			{
 				var index = modalStackCount - 1;
-				currentPageRenderer = Platform.GetRenderer(mainPage!.Navigation!.ModalStack![index]);
+				page = page.Navigation.ModalStack[index];
+				currentPageRenderer = Platform.GetRenderer(page);
 			}
 			else
 			{
-				currentPageRenderer = Platform.GetRenderer(mainPage);
+				currentPageRenderer = Platform.GetRenderer(page);
 			}
-			ViewController = currentPageRenderer.ViewController;
+
+			if (currentPageRenderer == null)
+			{
+				ViewController ??= page?.CreateViewController();
+			}
+			else
+			{
+				ViewController ??= currentPageRenderer.ViewController;
+			}
 		}
 
 		void SetEvents()
@@ -165,6 +184,9 @@ namespace Xamarin.CommunityToolkit.UI.Views
 
 		void SetLayout()
 		{
+			if (PresentationController == null || PopoverPresentationController == null)
+				return;
+
 			((UIPopoverPresentationController)PresentationController).SourceRect = new CGRect(0, 0, PreferredContentSize.Width, PreferredContentSize.Height);
 
 			_ = Element ?? throw new InvalidOperationException($"{nameof(Element)} cannot be null");
@@ -183,6 +205,7 @@ namespace Xamarin.CommunityToolkit.UI.Views
 					LayoutAlignment.Center => UIScreen.MainScreen.Bounds.Width / 2,
 					_ => 0f
 				};
+
 
 				PopoverPresentationController.SourceRect = new CGRect(originX, originY, 0, 0);
 				PopoverPresentationController.PermittedArrowDirections = 0;
@@ -226,6 +249,10 @@ namespace Xamarin.CommunityToolkit.UI.Views
 
 		void SetPresentationController()
 		{
+
+			if (PresentationController == null)
+				return;
+
 			var popOverDelegate = new PopoverDelegate();
 			popOverDelegate.PopoverDismissed += HandlePopoverDelegateDismissed;
 
@@ -269,8 +296,7 @@ namespace Xamarin.CommunityToolkit.UI.Views
 					Element.PropertyChanged -= OnElementPropertyChanged;
 					Element = null;
 
-					var presentationController = (UIPopoverPresentationController)PresentationController;
-					if (presentationController != null)
+					if (PresentationController is UIPopoverPresentationController presentationController)
 						presentationController.Delegate = null;
 				}
 			}

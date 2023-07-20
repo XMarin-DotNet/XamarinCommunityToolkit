@@ -87,12 +87,15 @@ namespace Xamarin.CommunityToolkit.UI.Views
 
 		protected virtual void OnElementPropertyChanged(object? sender, PropertyChangedEventArgs args)
 		{
-			if (args.PropertyName == BasePopup.VerticalOptionsProperty.PropertyName ||
-				args.PropertyName == BasePopup.HorizontalOptionsProperty.PropertyName ||
-				args.PropertyName == BasePopup.SizeProperty.PropertyName ||
-				args.PropertyName == BasePopup.ColorProperty.PropertyName)
+			if (Element is BasePopup basePopup && !isDisposed)
 			{
-				ConfigureControl();
+				if (args.PropertyName == BasePopup.VerticalOptionsProperty.PropertyName ||
+					args.PropertyName == BasePopup.HorizontalOptionsProperty.PropertyName ||
+					args.PropertyName == BasePopup.SizeProperty.PropertyName ||
+					args.PropertyName == BasePopup.ColorProperty.PropertyName)
+				{
+					ConfigureControl();
+				}
 			}
 
 			ElementPropertyChanged?.Invoke(this, args);
@@ -111,8 +114,7 @@ namespace Xamarin.CommunityToolkit.UI.Views
 
 		void SetEvents()
 		{
-			if (Element?.IsLightDismissEnabled is true)
-				Closing += OnClosing;
+			Closing += OnClosing;
 
 			if (Element != null)
 				Element.Dismissed += OnDismissed;
@@ -176,10 +178,8 @@ namespace Xamarin.CommunityToolkit.UI.Views
 
 			flyoutStyle.Setters.Add(new Windows.UI.Xaml.Setter(FlyoutPresenter.BackgroundProperty, Element.Color.ToWindowsColor()));
 
-#if UWP_18362
 			if (Element.Color == Color.Transparent)
 				flyoutStyle.Setters.Add(new Windows.UI.Xaml.Setter(FlyoutPresenter.IsDefaultShadowEnabledProperty, false));
-#endif
 		}
 
 		void ApplyStyles()
@@ -273,6 +273,8 @@ namespace Xamarin.CommunityToolkit.UI.Views
 		{
 			if (isOpen && Element?.IsLightDismissEnabled is true)
 				Element.LightDismiss();
+			if (isOpen && e is FlyoutBaseClosingEventArgs args)
+				args.Cancel = true;
 		}
 
 		void OnOpened(object sender, object e) =>
